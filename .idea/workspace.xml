@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="Messages enum implemented.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="workspace.xml">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ServerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/GameMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Messages.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688031373016</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="workspace.xml">
+      <created>1688031862597</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1688031862597</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -112,6 +119,7 @@
     <MESSAGE value="GameMap implemented." />
     <MESSAGE value="Delete Main. Menus became Runnable." />
     <MESSAGE value="Messages enum implemented." />
-    <option name="LAST_COMMIT_MESSAGE" value="Messages enum implemented." />
+    <MESSAGE value="workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml" />
   </component>
 </project>
