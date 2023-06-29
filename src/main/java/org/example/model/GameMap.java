@@ -4,11 +4,13 @@ import java.util.Objects;
 
 public class GameMap {
     public final String name;
-    public final User user;
     
     public GameMap (String name, User user) {
         this.name = name;
-        this.user = user;
+    }
+    
+    public GameMap (GameMap gameMap, User user) {
+        this.name = gameMap.name;
     }
     
     @Override
@@ -16,11 +18,11 @@ public class GameMap {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GameMap gameMap = (GameMap) o;
-        return name.equals(gameMap.name) && user.equals(gameMap.user);
+        return name.equals(gameMap.name);
     }
     
     @Override
     public int hashCode () {
-        return Objects.hash(name, user);
+        return Objects.hash(name);
     }
 }
