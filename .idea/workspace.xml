@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="Connection class added.">
+    <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="Connection and ServerHandler improvements.&#10;Gson added.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ServerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Connection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Messages.java" afterDir="false" />
@@ -114,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688032424991</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Connection and ServerHandler improvements.&#10;Gson added.">
+      <created>1688033980075</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1688033980075</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -137,6 +145,7 @@
     <MESSAGE value="workspace.xml" />
     <MESSAGE value="Removed User reference to avoid json recursive looping." />
     <MESSAGE value="Connection class added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Connection class added." />
+    <MESSAGE value="Connection and ServerHandler improvements.&#10;Gson added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Connection and ServerHandler improvements.&#10;Gson added." />
   </component>
 </project>
