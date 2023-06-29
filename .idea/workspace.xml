@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="User &amp; GameMap's toJson &amp; fromJson implemented.">
+    <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="ServerMenu implemented">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Commands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ServerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Connection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/ClientMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/ClientMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/ServerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/ServerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -49,6 +49,37 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false">
+      <option name="MAIN_CLASS_NAME" value="org.example.view.ClientMenu" />
+      <module name="comunity-sample" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.view.ServerMenu" />
+      <module name="comunity-sample" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.ServerMenu" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ServerMenu" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -135,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688034441215</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="ServerMenu implemented">
+      <created>1688037635402</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1688037635402</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -160,6 +198,7 @@
     <MESSAGE value="Connection and ServerHandler improvements.&#10;Gson added." />
     <MESSAGE value="workspace.xml" />
     <MESSAGE value="User &amp; GameMap's toJson &amp; fromJson implemented." />
-    <option name="LAST_COMMIT_MESSAGE" value="User &amp; GameMap's toJson &amp; fromJson implemented." />
+    <MESSAGE value="ServerMenu implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="ServerMenu implemented" />
   </component>
 </project>
