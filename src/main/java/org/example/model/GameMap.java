@@ -1,5 +1,7 @@
 package org.example.model;
 
+import com.google.gson.Gson;
+
 import java.util.Objects;
 
 public class GameMap {
@@ -24,5 +26,15 @@ public class GameMap {
     @Override
     public int hashCode () {
         return Objects.hash(name);
+    }
+    
+    public String toJson () {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+    
+    public static GameMap jsonToGameMap (String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, GameMap.class);
     }
 }

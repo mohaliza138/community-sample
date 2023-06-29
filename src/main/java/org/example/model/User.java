@@ -1,5 +1,7 @@
 package org.example.model;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -24,5 +26,15 @@ public class User {
     @Override
     public int hashCode () {
         return Objects.hash(name, maps);
+    }
+    
+    public String toJson () {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+    
+    public static User jsonToUser (String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, User.class);
     }
 }
