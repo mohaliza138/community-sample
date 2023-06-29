@@ -42,11 +42,22 @@ public class ClientMenu implements Runnable {
             input = scanner.nextLine();
             if ((matcher = Commands.NEW_MAP.getMatcher(input)) != null) {
                 user.maps.add(new GameMap(matcher.group("map"), user));
+                continue;
             } else if ((matcher = Commands.SHARE_MAP.getMatcher(input)) != null) {
                 GameMap sharingMap = user.getMapByName(matcher.group("map"));
                 if (sharingMap != null) outputStream.writeUTF(sharingMap.toJson());
-                else System.out.println("Invalid map name.");
-            } else outputStream.writeUTF("info");
+                else {
+                    System.out.println("Invalid map name.");
+                    continue;
+                }
+            } else if (Commands.USER_MAPS.getMatcher(input) != null) {
+                for (GameMap map : user.maps) {
+                    System.out.println(map.name);
+                }
+            } else if (Commands.SERVER_MAPS.getMatcher(input) != null) {
+                outputStream.writeUTF("info");
+                System.out.println(inputStream.readUTF());
+            }
         }
     }
 }

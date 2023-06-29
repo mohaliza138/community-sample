@@ -5,7 +5,9 @@ import java.util.regex.Pattern;
 
 public enum Commands {
     NEW_MAP ("new map (?<map>.*)"),
-    SHARE_MAP ("share (?<map>.*)");
+    SHARE_MAP ("share (?<map>.*)"),
+    SERVER_MAPS ("show server maps"),
+    USER_MAPS ("show my maps");
     private final String regex;
     Commands (String regex) {
         this.regex = regex;

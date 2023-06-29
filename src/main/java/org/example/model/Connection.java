@@ -27,14 +27,16 @@ public class Connection extends Thread {
             while (true) {
                 if (inputStream.available() != 0) {
                     String data = inputStream.readUTF();
-                    System.out.println(data);
                     if (data.equals("info")) {
+                        String result = "";
                         for (GameMap map : ServerHandler.serverHandler.getMaps()) {
-                            System.out.println(map);
+                            result += map.name;
+                            result += "\n";
                         }
+                        outputStream.writeUTF(result);
                     } else {
                         //todo: check map existence
-                        ServerHandler.serverHandler.addNewMap(GameMap.jsonToGameMap(data));
+                        outputStream.writeUTF(ServerHandler.serverHandler.addNewMap(GameMap.jsonToGameMap(data)).text);
                     }//TODO: command handling here...
                 }
             }
