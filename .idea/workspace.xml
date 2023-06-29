@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="Connection and ServerHandler improvements.&#10;Gson added.">
+    <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="User &amp; GameMap's toJson &amp; fromJson implemented.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ServerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/ClientMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/ClientMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +121,21 @@
       <option name="project" value="LOCAL" />
       <updated>1688033980075</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="workspace.xml">
+      <created>1688034001030</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1688034001030</updated>
+    </task>
+    <task id="LOCAL-00011" summary="User &amp; GameMap's toJson &amp; fromJson implemented.">
+      <created>1688034441215</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1688034441215</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -142,10 +155,11 @@
     <MESSAGE value="GameMap implemented." />
     <MESSAGE value="Delete Main. Menus became Runnable." />
     <MESSAGE value="Messages enum implemented." />
-    <MESSAGE value="workspace.xml" />
     <MESSAGE value="Removed User reference to avoid json recursive looping." />
     <MESSAGE value="Connection class added." />
     <MESSAGE value="Connection and ServerHandler improvements.&#10;Gson added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Connection and ServerHandler improvements.&#10;Gson added." />
+    <MESSAGE value="workspace.xml" />
+    <MESSAGE value="User &amp; GameMap's toJson &amp; fromJson implemented." />
+    <option name="LAST_COMMIT_MESSAGE" value="User &amp; GameMap's toJson &amp; fromJson implemented." />
   </component>
 </project>

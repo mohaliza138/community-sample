@@ -1,6 +1,7 @@
 package org.example.model;
 
 import com.google.gson.JsonSyntaxException;
+import org.example.controller.ServerHandler;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -9,38 +10,38 @@ import java.net.Socket;
 
 public class Connection implements Runnable {
     private final Socket socket;
-    private final User user;
+    private User user;
     private final DataInputStream inputStream;
     private final DataOutputStream outputStream;
     
-    public Connection (Socket socket, User user) throws IOException {
+    public Connection (Socket socket) throws IOException {
         this.socket = socket;
-        this.user = user;
         inputStream = new DataInputStream(socket.getInputStream());
         outputStream = new DataOutputStream(socket.getOutputStream());
     }
     
     @Override
     public void run () {
-        while (true) {
-            try {
+        try {
+            user = ServerHandler.serverHandler.referenceToNewlyAddedUser(getUserFromInputStream());
+            while (true) {
                 if (inputStream.available() != 0) {
                     String data = inputStream.readUTF();
                     //TODO: command handling here...
                 }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     
     private User getUserFromInputStream () throws IOException {
-        while (true){
+        while (true) {
             try {
                 String register = inputStream.readUTF();
+                return User.jsonToUser(register);
             } catch (JsonSyntaxException ignored) {
             }
-            //todo
         }
     }
 }
