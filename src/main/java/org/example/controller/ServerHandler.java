@@ -18,6 +18,14 @@ public class ServerHandler {
         return false;
     }
     
+    public ArrayList<User> getUsers () {
+        return users;
+    }
+    
+    public ArrayList<GameMap> getMaps () {
+        return maps;
+    }
+    
     public User referenceToNewlyAddedUser (User addingUser) {
         for (User user : users) {
             if (user.equals(addingUser))return user;

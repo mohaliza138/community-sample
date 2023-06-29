@@ -8,7 +8,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-public class Connection implements Runnable {
+public class Connection extends Thread {
     private final Socket socket;
     private User user;
     private final DataInputStream inputStream;
@@ -27,7 +27,15 @@ public class Connection implements Runnable {
             while (true) {
                 if (inputStream.available() != 0) {
                     String data = inputStream.readUTF();
-                    //TODO: command handling here...
+                    System.out.println(data);
+                    if (data.equals("info")) {
+                        for (GameMap map : ServerHandler.serverHandler.getMaps()) {
+                            System.out.println(map);
+                        }
+                    } else {
+                        //todo: check map existence
+                        ServerHandler.serverHandler.addNewMap(GameMap.jsonToGameMap(data));
+                    }//TODO: command handling here...
                 }
             }
         } catch (IOException e) {

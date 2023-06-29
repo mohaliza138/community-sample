@@ -15,11 +15,13 @@ public class ServerMenu implements Runnable {
         while (true) {
             try {
                 ServerSocket serverSocket = new ServerSocket(8080);
-                Socket socket = serverSocket.accept();
-                Connection connection = new Connection(socket);
-                connection.run();
+                while (true) {
+                    Socket socket = serverSocket.accept();
+                    Connection connection = new Connection(socket);
+                    connection.start();
+                }
             } catch (IOException e) {
-                throw new RuntimeException(e);
+//                throw new RuntimeException(e);
             }
         }
     }

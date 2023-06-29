@@ -21,27 +21,32 @@ public class ClientMenu implements Runnable {
     }
     @Override
     public void run () {
+        System.out.println("Enter your username:");
         user = new User(scanner.nextLine());
         try {
             Socket socket = new Socket("localhost", 8080);
             outputStream = new DataOutputStream(socket.getOutputStream());
             inputStream = new DataInputStream(socket.getInputStream());
+            outputStream.writeUTF(user.toJson());
             handleInput();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
     
-    private void handleInput () {
+    private void handleInput () throws IOException {
         String input;
         Matcher matcher;
         while (true) {
+            System.out.println("********************\nEnter your command:\n");
             input = scanner.nextLine();
             if ((matcher = Commands.NEW_MAP.getMatcher(input)) != null) {
                 user.maps.add(new GameMap(matcher.group("map"), user));
             } else if ((matcher = Commands.SHARE_MAP.getMatcher(input)) != null) {
-            
-            }
+                GameMap sharingMap = user.getMapByName(matcher.group("map"));
+                if (sharingMap != null) outputStream.writeUTF(sharingMap.toJson());
+                else System.out.println("Invalid map name.");
+            } else outputStream.writeUTF("info");
         }
     }
 }

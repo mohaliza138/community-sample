@@ -37,4 +37,11 @@ public class User {
         Gson gson = new Gson();
         return gson.fromJson(json, User.class);
     }
+    
+    public GameMap getMapByName (String name) {
+        for (GameMap map : maps) {
+            if (map.name.equals(name)) return map;
+        }
+        return null;
+    }
 }
