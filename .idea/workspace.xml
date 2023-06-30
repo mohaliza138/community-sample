@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="Server &amp; client connected.">
+    <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="Connection between server &amp; client improved.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ServerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Commands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Connection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/ClientMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/ClientMenu.java" afterDir="false" />
@@ -181,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688041189488</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Connection between server &amp; client improved.">
+      <created>1688069097695</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1688069097695</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -208,6 +216,7 @@
     <MESSAGE value="User &amp; GameMap's toJson &amp; fromJson implemented." />
     <MESSAGE value="ServerMenu implemented" />
     <MESSAGE value="ClientMenu improved.&#10;Commands enum added." />
-    <option name="LAST_COMMIT_MESSAGE" value="ClientMenu improved.&#10;Commands enum added." />
+    <MESSAGE value="Connection between server &amp; client improved." />
+    <option name="LAST_COMMIT_MESSAGE" value="Connection between server &amp; client improved." />
   </component>
 </project>

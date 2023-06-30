@@ -8,6 +8,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -16,9 +17,11 @@ public class ClientMenu implements Runnable {
     private DataInputStream inputStream;
     private User user;
     Scanner scanner = new Scanner(System.in);
+    
     public static void main (String[] args) {
         (new ClientMenu()).run();
     }
+    
     @Override
     public void run () {
         System.out.println("Enter your username:");
@@ -42,13 +45,13 @@ public class ClientMenu implements Runnable {
             input = scanner.nextLine();
             if ((matcher = Commands.NEW_MAP.getMatcher(input)) != null) {
                 user.maps.add(new GameMap(matcher.group("map"), user));
-                continue;
             } else if ((matcher = Commands.SHARE_MAP.getMatcher(input)) != null) {
                 GameMap sharingMap = user.getMapByName(matcher.group("map"));
-                if (sharingMap != null) outputStream.writeUTF(sharingMap.toJson());
-                else {
+                if (sharingMap != null) {
+                    outputStream.writeUTF(sharingMap.toJson());
+                    System.out.println(inputStream.readUTF());
+                } else {
                     System.out.println("Invalid map name.");
-                    continue;
                 }
             } else if (Commands.USER_MAPS.getMatcher(input) != null) {
                 for (GameMap map : user.maps) {
@@ -57,6 +60,17 @@ public class ClientMenu implements Runnable {
             } else if (Commands.SERVER_MAPS.getMatcher(input) != null) {
                 outputStream.writeUTF("info");
                 System.out.println(inputStream.readUTF());
+            } else if ((matcher = Commands.CLONE_MAP.getMatcher(input)) != null) {
+                if (user.getMapByName(matcher.group("map")) != null) {
+                    System.out.println("You already have a map with this name!");
+                }
+                outputStream.writeUTF(input);
+                String received = inputStream.readUTF();
+                if (received.equals("fail")) {
+                    System.out.println("No map with the name given!");
+                    continue;
+                }
+                user.maps.add(GameMap.jsonToGameMap(received));
             }
         }
     }

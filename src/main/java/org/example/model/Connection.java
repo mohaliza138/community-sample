@@ -7,6 +7,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.regex.Matcher;
 
 public class Connection extends Thread {
     private final Socket socket;
@@ -24,20 +25,28 @@ public class Connection extends Thread {
     public void run () {
         try {
             user = ServerHandler.serverHandler.referenceToNewlyAddedUser(getUserFromInputStream());
+            String data;
+            Matcher matcher;
             while (true) {
                 if (inputStream.available() != 0) {
-                    String data = inputStream.readUTF();
-                    if (data.equals("info")) {
-                        String result = "";
+                    data = inputStream.readUTF();
+                    if ((matcher = Commands.CLONE_MAP.getMatcher(data)) != null) {
+                        String mapName = matcher.group("map");
+                        GameMap map = ServerHandler.serverHandler.getMapByName(mapName);
+                        if (map == null) outputStream.writeUTF("fail");
+                        else outputStream.writeUTF(map.toJson());
+                    } else if (data.equals("info")) {
+                        StringBuilder result = new StringBuilder();
+                        boolean notFirstTime = false;
                         for (GameMap map : ServerHandler.serverHandler.getMaps()) {
-                            result += map.name;
-                            result += "\n";
+                            if (notFirstTime) result.append("\n");
+                            else notFirstTime = true;
+                            result.append(map.name);
                         }
-                        outputStream.writeUTF(result);
+                        outputStream.writeUTF(result.toString());
                     } else {
-                        //todo: check map existence
                         outputStream.writeUTF(ServerHandler.serverHandler.addNewMap(GameMap.jsonToGameMap(data)).text);
-                    }//TODO: command handling here...
+                    }
                 }
             }
         } catch (IOException e) {

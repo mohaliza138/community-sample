@@ -26,6 +26,13 @@ public class ServerHandler {
         return maps;
     }
     
+    public GameMap getMapByName (String name) {
+        for (GameMap map : maps) {
+            if (map.name.equals(name)) return map;
+        }
+        return null;
+    }
+    
     public User referenceToNewlyAddedUser (User addingUser) {
         for (User user : users) {
             if (user.equals(addingUser))return user;
