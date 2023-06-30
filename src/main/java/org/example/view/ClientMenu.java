@@ -2,10 +2,8 @@ package org.example.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -15,7 +13,6 @@ import org.example.model.Commands;
 import org.example.model.GameMap;
 import org.example.model.User;
 
-import java.awt.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -23,7 +20,6 @@ import java.net.Socket;
 import java.net.URL;
 import java.util.Scanner;
 import java.util.regex.Matcher;
-import javafx.scene.image.Image;
 
 public class ClientMenu extends Application implements Runnable {
     public VBox myMaps;
@@ -104,11 +100,26 @@ public class ClientMenu extends Application implements Runnable {
         stage.show();
     }
     
+    private void refresh() {
+        //todo implement based on server
+    }
+    
     @FXML
     public void initialize () {
         this.run();
         for (GameMap map : user.maps) {
-            myMaps.getChildren().add(new ImageView(ClientMenu.class.getResource("/Images/" + map.name + ".png").toString()));
+            ImageView imageView =
+                    new ImageView(ClientMenu.class.getResource("/Images/" + map.name + ".png").toString());
+            imageView.setOnMouseClicked(mouseEvent -> {
+                try {
+                    outputStream.writeUTF(map.toJson());
+                    System.out.println(inputStream.readUTF());
+//                    if (inputStream.readUTF().equals("Success!")) refresh();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            myMaps.getChildren().add(imageView);
         }
     }
 }
