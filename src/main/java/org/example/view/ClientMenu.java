@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -40,8 +39,8 @@ public class ClientMenu extends Application implements Runnable {
         System.out.println("Enter your username:");
         user = new User(scanner.nextLine());
         user.maps.add(new GameMap("map1", user));
-        user.maps.add(new GameMap("map4", user));
-        user.maps.add(new GameMap("map6", user));
+//        user.maps.add(new GameMap("map4", user));
+//        user.maps.add(new GameMap("map6", user));
         try {
             Socket socket = new Socket("localhost", 8080);
             outputStream = new DataOutputStream(socket.getOutputStream());
@@ -100,26 +99,52 @@ public class ClientMenu extends Application implements Runnable {
         stage.show();
     }
     
-    private void refresh() {
-        //todo implement based on server
+    private void refreshSharedMaps () throws IOException {
+        outputStream.writeUTF("info");
+        String allMaps = inputStream.readUTF();
+        String[] maps = allMaps.split("\n");
+        sharedMaps.getChildren().clear();
+        for (String map : maps) {
+            ImageView imageView = new ImageView(ClientMenu.class.getResource("/Images/" + map + ".png").toString());
+            imageView.setOnMouseClicked(mouseEvent -> {
+                try {
+                    outputStream.writeUTF("clone " + map);
+                    String received = inputStream.readUTF();
+                    user.maps.add(GameMap.jsonToGameMap(received));
+                    refreshMyMaps();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            sharedMaps.getChildren().add(imageView);
+        }
     }
     
-    @FXML
-    public void initialize () {
-        this.run();
+    private void refreshMyMaps () {
+        myMaps.getChildren().clear();
         for (GameMap map : user.maps) {
             ImageView imageView =
                     new ImageView(ClientMenu.class.getResource("/Images/" + map.name + ".png").toString());
             imageView.setOnMouseClicked(mouseEvent -> {
                 try {
                     outputStream.writeUTF(map.toJson());
-                    System.out.println(inputStream.readUTF());
-//                    if (inputStream.readUTF().equals("Success!")) refresh();
+                    if (inputStream.readUTF().equals("Success!")) refreshSharedMaps();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             });
             myMaps.getChildren().add(imageView);
+        }
+    }
+    
+    @FXML
+    public void initialize () {
+        this.run();
+        refreshMyMaps();
+        try {
+            refreshSharedMaps();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
