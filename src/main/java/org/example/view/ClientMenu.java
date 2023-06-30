@@ -1,36 +1,57 @@
 package org.example.view;
 
+import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.example.model.Commands;
 import org.example.model.GameMap;
 import org.example.model.User;
 
+import java.awt.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.URL;
 import java.util.Scanner;
 import java.util.regex.Matcher;
+import javafx.scene.image.Image;
 
-public class ClientMenu implements Runnable {
+public class ClientMenu extends Application implements Runnable {
+    public VBox myMaps;
+    public ScrollPane sharedMaps;
+    public ScrollPane availableMaps;
     Scanner scanner = new Scanner(System.in);
     private DataOutputStream outputStream;
     private DataInputStream inputStream;
     private User user;
     
     public static void main (String[] args) {
-        (new ClientMenu()).run();
+        launch(args);
+//        (new ClientMenu()).run();
     }
     
     @Override
     public void run () {
         System.out.println("Enter your username:");
         user = new User(scanner.nextLine());
+        user.maps.add(new GameMap("map1", user));
+        user.maps.add(new GameMap("map4", user));
+        user.maps.add(new GameMap("map6", user));
         try {
             Socket socket = new Socket("localhost", 8080);
             outputStream = new DataOutputStream(socket.getOutputStream());
             inputStream = new DataInputStream(socket.getInputStream());
             outputStream.writeUTF(user.toJson());
-            handleInput();
+//            handleInput();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -71,6 +92,23 @@ public class ClientMenu implements Runnable {
                 }
                 user.maps.add(GameMap.jsonToGameMap(received));
             }
+        }
+    }
+    
+    @Override
+    public void start (Stage stage) throws Exception {
+        URL url = ClientMenu.class.getResource("/FXML/ClientCommunityMenu.fxml");
+        Pane pane = FXMLLoader.load(url);
+        Scene scene = new Scene(pane);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    @FXML
+    public void initialize () {
+        this.run();
+        for (GameMap map : user.maps) {
+            myMaps.getChildren().add(new ImageView(ClientMenu.class.getResource("/Images/" + map.name + ".png").toString()));
         }
     }
 }

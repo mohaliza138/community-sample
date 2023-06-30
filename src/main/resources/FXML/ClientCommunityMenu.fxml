@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.view.ClientMenu"
+      prefHeight="900.0" prefWidth="1200.0">
+    <ScrollPane HBox.hgrow="ALWAYS">
+        <!-- Content of the first scroll pane -->
+        <VBox alignment="CENTER" fx:id="myMaps" maxWidth="400" minWidth="400" prefWidth="400">
+
+        </VBox>
+    </ScrollPane>
+    <ScrollPane HBox.hgrow="ALWAYS" fx:id="sharedMaps" maxWidth="400" minWidth="400" prefWidth="400">
+        <!-- Content of the second scroll pane -->
+        <Label text="text"/>
+        <Label text="text"/>
+        <Label text="text"/>
+        <Label text="text"/>
+        <Label text="text"/>
+        <Label text="text"/>
+    </ScrollPane>
+    <ScrollPane HBox.hgrow="ALWAYS" fx:id="availableMaps" maxWidth="400" minWidth="400" prefWidth="400">
+        <!-- Content of the third scroll pane -->
+        <VBox>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+            <Label text="text"/>
+        </VBox>
+    </ScrollPane>
+</HBox>
