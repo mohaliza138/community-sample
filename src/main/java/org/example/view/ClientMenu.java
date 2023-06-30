@@ -23,8 +23,8 @@ import java.util.regex.Matcher;
 
 public class ClientMenu extends Application implements Runnable {
     public VBox myMaps;
-    public ScrollPane sharedMaps;
-    public ScrollPane availableMaps;
+    public VBox sharedMaps;
+    public VBox availableMaps;
     Scanner scanner = new Scanner(System.in);
     private DataOutputStream outputStream;
     private DataInputStream inputStream;

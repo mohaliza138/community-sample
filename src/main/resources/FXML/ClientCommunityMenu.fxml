@@ -5,109 +5,37 @@
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.example.view.ClientMenu"
-      prefHeight="900.0" prefWidth="1200.0">
-    <ScrollPane HBox.hgrow="ALWAYS">
+      prefHeight="900.0" prefWidth="1360.0"
+      minWidth="1360"
+      stylesheets="@../CSS/style.css"
+      spacing="20" alignment="CENTER">
+    <ScrollPane HBox.hgrow="ALWAYS" maxHeight="860">
         <!-- Content of the first scroll pane -->
-        <VBox alignment="CENTER" fx:id="myMaps" maxWidth="400" minWidth="400" prefWidth="400">
+        <VBox alignment="CENTER" maxWidth="400" minWidth="400" prefWidth="400">
+            <Label text="My Maps" styleClass="header"/>
+            <Label/>
+            <VBox alignment="CENTER" fx:id="myMaps" maxWidth="360" minWidth="360" prefWidth="360" spacing="10">
 
+            </VBox>
         </VBox>
     </ScrollPane>
-    <ScrollPane HBox.hgrow="ALWAYS" fx:id="sharedMaps" maxWidth="400" minWidth="400" prefWidth="400">
+    <ScrollPane HBox.hgrow="ALWAYS" maxHeight="860">
         <!-- Content of the second scroll pane -->
-        <Label text="text"/>
-        <Label text="text"/>
-        <Label text="text"/>
-        <Label text="text"/>
-        <Label text="text"/>
-        <Label text="text"/>
+        <VBox alignment="CENTER" maxWidth="400" minWidth="400" prefWidth="400">
+            <Label text="Shared Maps" styleClass="header"/>
+            <Label/>
+            <VBox alignment="CENTER" fx:id="sharedMaps" maxWidth="360" minWidth="360" prefWidth="360" spacing="10">
+
+            </VBox>
+        </VBox>
     </ScrollPane>
-    <ScrollPane HBox.hgrow="ALWAYS" fx:id="availableMaps" maxWidth="400" minWidth="400" prefWidth="400">
+    <ScrollPane HBox.hgrow="ALWAYS" maxHeight="860">
         <!-- Content of the third scroll pane -->
-        <VBox>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
-            <Label text="text"/>
+        <VBox alignment="CENTER" maxWidth="400" minWidth="400" prefWidth="400">
+            <Label text="Map Store" styleClass="header" alignment="CENTER"/>
+            <Label/>
+            <VBox alignment="CENTER" fx:id="availableMaps" maxWidth="360" minWidth="360" prefWidth="360" spacing="10">
+            </VBox>
         </VBox>
     </ScrollPane>
 </HBox>

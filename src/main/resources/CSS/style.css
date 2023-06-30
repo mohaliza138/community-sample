@@ -1,0 +1,38 @@
+.root {
+    -fx-background-color: #222222;
+}
+
+.label {
+    -fx-text-fill: #888888;
+    -fx-text-size: 18px;
+}
+
+.header {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+}
+
+.scroll-pane {
+    -fx-background-color: #333333;
+    -fx-background-radius: 4;
+    -fx-border-color: olive;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 0;
+}
+
+.scroll-pane .viewport {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-background-color: #333333;
+}
+
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: purple;
+}
+
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-opacity: 0;
+}
