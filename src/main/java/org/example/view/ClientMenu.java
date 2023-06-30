@@ -8,15 +8,14 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class ClientMenu implements Runnable {
+    Scanner scanner = new Scanner(System.in);
     private DataOutputStream outputStream;
     private DataInputStream inputStream;
     private User user;
-    Scanner scanner = new Scanner(System.in);
     
     public static void main (String[] args) {
         (new ClientMenu()).run();

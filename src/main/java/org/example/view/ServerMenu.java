@@ -10,6 +10,7 @@ public class ServerMenu implements Runnable {
     public static void main (String[] args) {
         (new ServerMenu()).run();
     }
+    
     @Override
     public void run () {
         while (true) {

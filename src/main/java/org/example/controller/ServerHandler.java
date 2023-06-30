@@ -5,12 +5,12 @@ import org.example.model.Messages;
 import org.example.model.User;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
 public class ServerHandler {
     public static ServerHandler serverHandler = new ServerHandler();
     private final ArrayList<User> users = new ArrayList<>();
     private final ArrayList<GameMap> maps = new ArrayList<>();
+    
     private boolean isTheMapAdded (GameMap map) {
         for (GameMap gameMap : maps) {
             if (gameMap.equals(map)) return true;
@@ -35,7 +35,7 @@ public class ServerHandler {
     
     public User referenceToNewlyAddedUser (User addingUser) {
         for (User user : users) {
-            if (user.equals(addingUser))return user;
+            if (user.equals(addingUser)) return user;
         }
         users.add(addingUser);
         return addingUser;

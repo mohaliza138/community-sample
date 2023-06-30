@@ -15,6 +15,11 @@ public class GameMap {
         this.name = gameMap.name;
     }
     
+    public static GameMap jsonToGameMap (String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, GameMap.class);
+    }
+    
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
@@ -31,10 +36,5 @@ public class GameMap {
     public String toJson () {
         Gson gson = new Gson();
         return gson.toJson(this);
-    }
-    
-    public static GameMap jsonToGameMap (String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, GameMap.class);
     }
 }

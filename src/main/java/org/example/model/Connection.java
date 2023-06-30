@@ -11,9 +11,9 @@ import java.util.regex.Matcher;
 
 public class Connection extends Thread {
     private final Socket socket;
-    private User user;
     private final DataInputStream inputStream;
     private final DataOutputStream outputStream;
+    private User user;
     
     public Connection (Socket socket) throws IOException {
         this.socket = socket;
