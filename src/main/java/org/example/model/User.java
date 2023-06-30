@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class User {
-    public static User user;
-    public final String name;
-    public final ArrayList<GameMap> maps;
+    private final String name;
+    private ArrayList<GameMap> customMaps;
+    private final ArrayList<String> receivedMapsNames = new ArrayList<>();
     
     public User (String name) {
         this.name = name;
-        this.maps = new ArrayList<>();
+        this.setCustomMaps(new ArrayList<>());
     }
     
     public static User jsonToUser (String json) {
@@ -25,12 +25,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return name.equals(user.name) && maps.equals(user.maps);
+        return getName().equals(user.getName()) && getCustomMaps().equals(user.getCustomMaps());
     }
     
     @Override
     public int hashCode () {
-        return Objects.hash(name, maps);
+        return Objects.hash(getName(), getCustomMaps());
     }
     
     public String toJson () {
@@ -39,9 +39,25 @@ public class User {
     }
     
     public GameMap getMapByName (String name) {
-        for (GameMap map : maps) {
+        for (GameMap map : getCustomMaps()) {
             if (map.name.equals(name)) return map;
         }
         return null;
+    }
+    
+    private String getName () {
+        return name;
+    }
+    
+    public ArrayList<GameMap> getCustomMaps () {
+        return customMaps;
+    }
+    
+    private void setCustomMaps (ArrayList<GameMap> customMaps) {
+        this.customMaps = customMaps;
+    }
+    
+    public ArrayList<String> getReceivedMapsNames () {
+        return receivedMapsNames;
     }
 }

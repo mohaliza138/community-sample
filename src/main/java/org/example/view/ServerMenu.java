@@ -21,8 +21,7 @@ public class ServerMenu implements Runnable {
                     Connection connection = new Connection(socket);
                     connection.start();
                 }
-            } catch (IOException e) {
-//                throw new RuntimeException(e);
+            } catch (IOException ignored) {
             }
         }
     }

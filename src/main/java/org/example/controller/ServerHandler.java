@@ -18,10 +18,6 @@ public class ServerHandler {
         return false;
     }
     
-    public ArrayList<User> getUsers () {
-        return users;
-    }
-    
     public ArrayList<GameMap> getMaps () {
         return maps;
     }
@@ -44,7 +40,6 @@ public class ServerHandler {
     public Messages addNewMap (GameMap map) {
         if (isTheMapAdded(map)) return Messages.MAP_ALREADY_ADDED;
         maps.add(map);
-        //todo: graphical changes!
         return Messages.SUCCESS;
     }
 }

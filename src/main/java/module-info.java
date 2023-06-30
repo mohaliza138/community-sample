@@ -9,5 +9,6 @@ module community.sample {
     exports org.example.view to javafx.graphics;
     exports org.example.model to com.google.gson;
     
+    opens org.example.model to com.google.gson;
     opens org.example.view to javafx.fxml;
 }

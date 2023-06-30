@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -44,55 +45,13 @@ public class ClientMenu extends Application implements Runnable {
     public void run () {
         System.out.println("Enter your username:");
         user = new User(scanner.nextLine());
-//        user.maps.add(new GameMap("map1", user));
-//        user.maps.add(new GameMap("map4", user));
-//        user.maps.add(new GameMap("map6", user));
         try {
             Socket socket = new Socket("localhost", 8080);
             outputStream = new DataOutputStream(socket.getOutputStream());
             inputStream = new DataInputStream(socket.getInputStream());
             outputStream.writeUTF(user.toJson());
-//            handleInput();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-    
-    private void handleInput () throws IOException {
-        String input;
-        Matcher matcher;
-        while (true) {
-            System.out.println("********************\nEnter your command:\n");
-            input = scanner.nextLine();
-            if ((matcher = Commands.NEW_MAP.getMatcher(input)) != null) {
-                user.maps.add(new GameMap(matcher.group("map"), user));
-            } else if ((matcher = Commands.SHARE_MAP.getMatcher(input)) != null) {
-                GameMap sharingMap = user.getMapByName(matcher.group("map"));
-                if (sharingMap != null) {
-                    outputStream.writeUTF(sharingMap.toJson());
-                    System.out.println(inputStream.readUTF());
-                } else {
-                    System.out.println("Invalid map name.");
-                }
-            } else if (Commands.USER_MAPS.getMatcher(input) != null) {
-                for (GameMap map : user.maps) {
-                    System.out.println(map.name);
-                }
-            } else if (Commands.SERVER_MAPS.getMatcher(input) != null) {
-                outputStream.writeUTF("info");
-                System.out.println(inputStream.readUTF());
-            } else if ((matcher = Commands.CLONE_MAP.getMatcher(input)) != null) {
-                if (user.getMapByName(matcher.group("map")) != null) {
-                    System.out.println("You already have a map with this name!");
-                }
-                outputStream.writeUTF(input);
-                String received = inputStream.readUTF();
-                if (received.equals("fail")) {
-                    System.out.println("No map with the name given!");
-                    continue;
-                }
-                user.maps.add(GameMap.jsonToGameMap(received));
-            }
         }
     }
     
@@ -110,14 +69,18 @@ public class ClientMenu extends Application implements Runnable {
         String allMaps = inputStream.readUTF();
         String[] maps = allMaps.split("\n");
         sharedMaps.getChildren().clear();
-        if (maps[0].isBlank())return;
+        if (maps[0].isBlank()) return;
         for (String map : maps) {
-            ImageView imageView = new ImageView(ClientMenu.class.getResource("/Images/" + map + ".png").toString());
+            ImageView imageView = new ImageView(ClientMenu.class.getResource("/images/" + map + ".png").toString());
             imageView.setOnMouseClicked(mouseEvent -> {
                 try {
                     outputStream.writeUTF("clone " + map);
                     String received = inputStream.readUTF();
-                    user.maps.add(GameMap.jsonToGameMap(received));
+                    if (received.equals("fail")) return;
+                    GameMap gameMap = GameMap.jsonToGameMap(received);
+                    if (user.getMapByName(gameMap.name) != null) return;
+                    user.getCustomMaps().add(gameMap);
+                    user.getReceivedMapsNames().add(gameMap.name);
                     refreshMyMaps();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -130,9 +93,14 @@ public class ClientMenu extends Application implements Runnable {
     private void refreshMyMaps () {
         refreshShop();
         myMaps.getChildren().clear();
-        for (GameMap map : user.maps) {
+        for (GameMap map : user.getCustomMaps()) {
             ImageView imageView =
-                    new ImageView(ClientMenu.class.getResource("/Images/" + map.name + ".png").toString());
+                    new ImageView(ClientMenu.class.getResource("/images/" + map.name + ".png").toString());
+            if (user.getReceivedMapsNames().contains(map.name)) {
+                ColorAdjust monochrome = new ColorAdjust();
+                monochrome.setSaturation(-1.0);
+                imageView.setEffect(monochrome);
+            }
             imageView.setOnMouseClicked(mouseEvent -> {
                 try {
                     outputStream.writeUTF(map.toJson());
@@ -147,14 +115,14 @@ public class ClientMenu extends Application implements Runnable {
     
     private void refreshShop () {
         ArrayList<String> mapNames = new ArrayList<>(List.of(new String[] {"map1", "map2", "map4", "map5", "map6"}));
-        for (GameMap map : user.maps) {
+        for (GameMap map : user.getCustomMaps()) {
             mapNames.remove(map.name);
         }
         availableMaps.getChildren().clear();
         for (String map : mapNames) {
-            ImageView imageView = new ImageView(ClientMenu.class.getResource("/Images/" + map + ".png").toString());
+            ImageView imageView = new ImageView(ClientMenu.class.getResource("/images/" + map + ".png").toString());
             imageView.setOnMouseClicked(mouseEvent -> {
-                user.maps.add(new GameMap(map, user));
+                user.getCustomMaps().add(new GameMap(map));
                 refreshMyMaps();
             });
             availableMaps.getChildren().add(imageView);

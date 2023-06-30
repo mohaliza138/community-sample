@@ -7,11 +7,11 @@ import java.util.Objects;
 public class GameMap {
     public final String name;
     
-    public GameMap (String name, User user) {
+    public GameMap (String name) {
         this.name = name;
     }
     
-    public GameMap (GameMap gameMap, User user) {
+    public GameMap (GameMap gameMap) {
         this.name = gameMap.name;
     }
     

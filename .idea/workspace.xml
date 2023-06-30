@@ -6,6 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/ClientMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/ClientMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/map1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/map2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/map4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/map5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/map6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map6.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688139479360</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="workspace.xml">
+      <created>1688139624234</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1688139624234</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
