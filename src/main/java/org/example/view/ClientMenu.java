@@ -1,5 +1,7 @@
 package org.example.view;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.example.model.Commands;
 import org.example.model.GameMap;
 import org.example.model.User;
@@ -17,6 +20,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -28,6 +33,7 @@ public class ClientMenu extends Application implements Runnable {
     private DataOutputStream outputStream;
     private DataInputStream inputStream;
     private User user;
+    private Timeline refreshTimeline;
     
     public static void main (String[] args) {
         launch(args);
@@ -38,7 +44,7 @@ public class ClientMenu extends Application implements Runnable {
     public void run () {
         System.out.println("Enter your username:");
         user = new User(scanner.nextLine());
-        user.maps.add(new GameMap("map1", user));
+//        user.maps.add(new GameMap("map1", user));
 //        user.maps.add(new GameMap("map4", user));
 //        user.maps.add(new GameMap("map6", user));
         try {
@@ -104,6 +110,7 @@ public class ClientMenu extends Application implements Runnable {
         String allMaps = inputStream.readUTF();
         String[] maps = allMaps.split("\n");
         sharedMaps.getChildren().clear();
+        if (maps[0].isBlank())return;
         for (String map : maps) {
             ImageView imageView = new ImageView(ClientMenu.class.getResource("/Images/" + map + ".png").toString());
             imageView.setOnMouseClicked(mouseEvent -> {
@@ -121,6 +128,7 @@ public class ClientMenu extends Application implements Runnable {
     }
     
     private void refreshMyMaps () {
+        refreshShop();
         myMaps.getChildren().clear();
         for (GameMap map : user.maps) {
             ImageView imageView =
@@ -135,6 +143,31 @@ public class ClientMenu extends Application implements Runnable {
             });
             myMaps.getChildren().add(imageView);
         }
+    }
+    
+    private void refreshShop () {
+        ArrayList<String> mapNames = new ArrayList<>(List.of(new String[] {"map1", "map2", "map4", "map5", "map6"}));
+        for (GameMap map : user.maps) {
+            mapNames.remove(map.name);
+        }
+        availableMaps.getChildren().clear();
+        for (String map : mapNames) {
+            ImageView imageView = new ImageView(ClientMenu.class.getResource("/Images/" + map + ".png").toString());
+            imageView.setOnMouseClicked(mouseEvent -> {
+                user.maps.add(new GameMap(map, user));
+                refreshMyMaps();
+            });
+            availableMaps.getChildren().add(imageView);
+        }
+        refreshTimeline = new Timeline(new KeyFrame(Duration.seconds(1), actionEvent -> {
+            try {
+                refreshSharedMaps();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }));
+        refreshTimeline.setCycleCount(-1);
+        refreshTimeline.play();
     }
     
     @FXML

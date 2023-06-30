@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="Graphical improvements.">
+    <list default="true" id="f215fe04-a988-4cb0-a129-b7d63e5d5ab5" name="Changes" comment="Clone implemented.&#10;Lists refresh from this commit.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/view/ClientMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/view/ClientMenu.java" afterDir="false" />
     </list>
@@ -258,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688135455966</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Clone implemented.&#10;Lists refresh from this commit.">
+      <created>1688136456020</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1688136456020</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -291,6 +298,7 @@
     <MESSAGE value="Graphical basics implemented." />
     <MESSAGE value="Share implemented." />
     <MESSAGE value="Graphical improvements." />
-    <option name="LAST_COMMIT_MESSAGE" value="Graphical improvements." />
+    <MESSAGE value="Clone implemented.&#10;Lists refresh from this commit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Clone implemented.&#10;Lists refresh from this commit." />
   </component>
 </project>
